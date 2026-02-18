@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Upload Sighting</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="upload-sightings.js" defer></script>
+</head>
+<body>
+
+  <form class="sighting-form">
+    <h2>Upload Sighting</h2>
+
+    <label>
+      Title
+      <input type="text" name="title" id="title" required>
+    </label>
+
+    <label>
+      Date & Time
+      <input type="datetime-local" name="datetime" id="datetime" required>
+    </label>
+
+    <label>
+      Location
+      <input type="text" name="location" id="location" required>
+    </label>
+
+    <label>
+      Description
+      <textarea name="description" rows="4" id="description" required></textarea>
+    </label>
+
+    <button type="submit">Submit</button>
+    <p class="form-message"></p>
+
+  </form>
+
+</body>
+</html>
