@@ -1,0 +1,522 @@
+/* ============================== */
+/*         RESET STYLES           */
+/* ============================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ============================== */
+/*             BODY               */
+/* ============================== */
+
+body {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #333;
+    color: #f9f9f9;
+    min-height: 100vh;
+}
+
+/* Background Image Overlay */
+body::before {
+    position: absolute;
+    content: "";
+    background-image: url('./images/ghostbg.jpg');
+    background-size: cover;
+    background-position: center 40%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    opacity: 0.15;
+    background-attachment: fixed;
+}
+
+/* ============================== */
+/*            TYPOGRAPHY          */
+/* ============================== */
+
+h1, h2, h3 {
+    font-family: "Frijole", serif;
+}
+
+a {
+    color: white;
+    margin: 0 auto;
+    display: block;
+    width: fit-content;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: deepskyblue;
+}
+
+a:focus {
+    outline: 3px solid #fff;
+    outline-offset: 2px;
+    color: #222;
+}
+
+a:active {
+    color: deepskyblue;
+    transform: scale(0.98);
+}
+
+h1 {
+    font-size: 2em;
+    text-align: center;
+}
+
+h1, h2 {
+    color: white;
+    letter-spacing: .13rem;
+}
+
+h3 {
+    font-size: 2em;
+}
+
+p {
+    font-family: 'Poppins', sans-serif;
+    margin-top: 0;
+}
+
+
+.site-title {
+    font-size: clamp(2rem, 8.333vw, 3.5rem);
+    font-family: "Frijole", serif;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    margin: 0;
+}
+
+.site-title-page {
+    font-size: clamp(.7rem, 4.999vw, 1.1rem);
+    font-family: "Frijole", serif;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    margin: 0 0 1em 0;
+}
+
+.site-title:hover, .site-title-page:hover {
+    text-decoration: none;
+    color: deepskyblue;
+}
+
+.site-title:focus, .site-title-page:focus {
+    background-color: white;
+    color: #222;
+}
+
+.site-title:active, .site-title-page:active {
+    color: deepskyblue;
+}
+
+.page-title {
+    font-size: clamp(1rem, 6.333vw, 2.5rem);
+    font-family: "Frijole", serif;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    margin: 0 1em;
+}
+
+.hero-title {
+    font-size: clamp(1rem, 5.333vw, 2.5rem);
+    text-align: center;
+    font-weight: 200;
+    max-width: 500px;
+}
+
+footer p{
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+/* ============================== */
+/*         NAVIGATION MENU        */
+/* ============================== */
+
+nav a {
+    color: #fff;
+    letter-spacing: 1.2px;
+    padding: 0 .5em;
+    font-size: .9em;
+    font-family: 'Poppins', sans-serif;
+}
+
+nav a:hover {
+    text-decoration: underline;
+    color: deepskyblue;
+}
+
+nav a:focus {
+    outline: 3px solid #fff;
+    outline-offset: 2px;
+    background-color: white;
+    color: #222;
+}
+
+nav a:active {
+    background-color: #444;
+    color: white;
+    transform: scale(0.98);
+}
+
+.current::before {
+    content: "👻 ";
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+}
+
+/* ============================== */
+/*         HEADER & FOOTER        */
+/* ============================== */
+
+.site-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+    padding: 1.5em 1.5em 0 1.5em;
+}
+
+.top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2em;
+    padding: 1em 1em 0 2em;
+}
+
+footer {
+    padding: .4rem 0;
+    width: 100%;
+    color: #fff;
+}
+
+/* ============================== */
+/*         LOGO IMAGE STYLES      */
+/* ============================== */
+
+.logo-img {
+    width: 6vw;
+    max-width: 40px;
+    opacity: 0.7;
+}
+
+/* ============================== */
+/*           MAIN CONTENT         */
+/* ============================== */
+
+main {
+    display: flex;
+    margin: 0 4em;
+    justify-content: center;
+}
+
+main.sightings {
+    flex-direction: column;
+    align-items: center;
+}
+
+main.form-container {
+    flex-direction: column;
+    align-items: center;
+}
+
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 1rem;
+    padding: 0 1em;
+    margin: 2em 0;
+}
+
+/* ============================== */
+/*        FORM STYLING            */
+/* ============================== */
+
+form {
+    margin-top: 1.5em;
+    background-color: #333;
+    width: 100%;
+    max-width: 800px;
+    text-align: left;
+    border-radius: 10px;
+    gap: 0 1em;
+    padding: 2em;
+    display: grid;
+    grid-template-areas:
+        "lt ld ld"
+        "it id id"
+        "lm id id"
+        "im id id"
+        "ll id id"
+        "il id id"
+        "sb sb sb"
+        "fm fm fm";
+}
+
+@media (max-width: 650px) {
+
+    main.form-container {
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+}
+
+    form {
+        grid-template-areas:
+        "lt"
+        "it"
+        "lm"
+        "im"
+        "ll"
+        "il"
+        "ld"
+        "id"
+        "sb"
+        "fm";   
+    }
+}
+
+.form-title {
+    grid-area: ft;
+}
+
+.lab-title {
+    grid-area: lt;
+}
+
+.input-title {
+    grid-area: it;
+}
+
+.lab-details {
+    grid-area: ld;
+}
+
+.input-details {
+    grid-area: id;
+}
+
+.lab-date-time {
+    grid-area: lm;
+}
+
+.input-date-time {
+    grid-area: im;
+}
+
+.lab-location {
+    grid-area: ll;
+}
+
+.input-location {
+    grid-area: il;
+}
+
+.submit-btn {
+    grid-area: sb;
+}
+
+.form-message {
+    grid-area: fm;
+}
+
+
+label {
+    display: block;
+    margin-top: 1em;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+input::placeholder, textarea::placeholder, input[type="datetime-local"] {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    color: #666;
+}
+
+input {
+    height: 50px;
+    border: none;
+}
+
+
+textarea, input {
+    border-radius: 5px;
+}
+
+
+input, textarea, .submit-btn {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    box-sizing: border-box;
+}
+
+textarea {
+    padding-bottom: 10px;
+    line-height: 1.4;
+    resize: none;
+}
+
+.submit-btn {
+    margin-top: 1em;
+    color: white;
+    border: 2px solid white;
+    cursor: pointer;
+    font-size: 24px;
+    border-radius: 5px;
+    font-family: 'Frijole', serif;
+    background-color: #333;
+
+}
+
+.submit-btn:hover {
+    background-color: white;
+    color: #222;
+}
+
+.submit-btn:focus {
+    outline: 3px solid #fff;
+    outline-offset: 2px;
+    background-color: white;
+    color: #222;
+}
+
+.submit-btn:active {
+    background-color: #222;
+    color: white;
+    outline: 3px solid yellow;
+    outline-offset: 2px;
+}
+
+.form-message p {
+    font-size: 0.9rem;
+    color: #fff;
+    margin-top: 1.5em;
+    text-align: center;
+}
+
+/* ============================== */
+/*             CARDS              */
+/* ============================== */
+
+
+.sighting-card {
+    position: relative;
+    background: #fff;
+    border-radius: 3px;
+    box-shadow: 0 4px 60px rgba(0, 0, 0, 0.1);
+    min-width: 320px;
+    max-width: 350px;
+    min-height: 250px;
+    padding: 1.4rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.sighting-card h3 {
+    font-size: 1.2rem;
+    color: #333;
+    font-family: 'Poppins', sans-serif;
+    margin: 0.2em 0;
+}
+
+.sighting-card p {
+    color: #555;
+}
+
+.card-details {
+    font-size: 0.8rem;
+    color: #666;
+    margin: 0;
+}
+
+.sighting-text-wrapper {
+    max-height: 8.4em;
+    overflow: hidden;
+    position: relative;
+    transition: max-height 0.4s ease;
+}
+
+.sighting-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    position: relative;
+    text-overflow: clip;
+}
+
+.sighting-text::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1.6em;
+    background: linear-gradient(to bottom, transparent, #fff);
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+}
+
+/* Hide gradient when expanded */
+.sighting-card.expanded::after {
+    opacity: 0;
+}
+
+.sighting-card.expanded .sighting-text {
+    -webkit-line-clamp: unset;
+    line-clamp: unset;
+    display: block;
+    overflow: visible;
+}
+
+.sighting-card.expanded .sighting-text::after {
+    background: unset;
+}
+
+.sighting-card.expanded .sighting-text-wrapper {
+    max-height: 1000px;
+}
+
+.read-more-btn {
+    background: none;
+    border: none;
+    color: #222;
+    padding: 0 .5em;
+    font: inherit;
+    cursor: pointer;
+    margin-top: 1em;
+    align-self: flex-end;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+}
+
+.read-more-btn:hover,
+.read-more-btn:focus {
+    text-decoration: none;
+    color: #0357aa;
+    outline: 1px solid #0357aa;
+}

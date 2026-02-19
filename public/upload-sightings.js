@@ -1,27 +1,27 @@
-// Get form and message elements
-const form = document.querySelector("form");
-const formMessageText = document.querySelector(".form-message");
+const form = document.getElementById("eventForm")
+const formMessageText = document.getElementsByClassName("form-message-text")[0]
 
-// Handle form submit
-form.addEventListener("submit", async (e) => {
-  e.preventDefault(); // stop page reload
+form.addEventListener("submit", async function (event) {
+  event.preventDefault()
 
-  // Read input values
-  const title = document.getElementById("title").value.trim();
-  const location = document.getElementById("location").value.trim();
-  const text = document.getElementById("description").value.trim();
-  const isoDateString = document.getElementById("datetime").value;
+  const location = document.getElementById("location").value
+  const text = document.getElementById("details").value
+  const title = document.getElementById("title").value
 
-  // Basic validation
-  if (!title || !location || !text || !isoDateString) {
-    formMessageText.textContent = "Please fill in all fields";
-    return;
+  if (!location || !text || !title) {
+    formMessageText.textContent = `Please complete all fields!`
+    return
   }
 
-  // Convert ISO string to Date object
-  const date = new Date(isoDateString);
+  const isoDateString = document.getElementById("datetime").value
 
-  // Format date to readable string
+  if (!isoDateString) {
+    formMessageText.textContent = "Please select a date and time!"
+    return
+  }
+  // Convert the string to a JavaScript Date object
+  const date = new Date(isoDateString)
+  // Format the date to a readable string
   const options = {
     year: "numeric",
     month: "long",
@@ -29,40 +29,35 @@ form.addEventListener("submit", async (e) => {
     hour: "2-digit",
     minute: "2-digit",
     hour12: false,
-  };
+  }
+  const readableDate = date.toLocaleString("en-GB", options)
 
-  const readableDate = date.toLocaleString("en-GB", options);
-
-  // Prepare data to send
   const formData = {
-    title: title,
     location: location,
-    text: text,
     timeStamp: readableDate,
-  };
+    text: text,
+    title: title,
+  }
 
   try {
-    // Clear previous message
-    formMessageText.textContent = "";
-
-    // Send data to backend
-    const response = await fetch("/api", {
+    // Send form data using fetch API
+    formMessageText.textContent = ""
+    const response = await fetch("./api", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "application/json"
       },
       body: JSON.stringify(formData),
-    });
-
+    })
     if (response.ok) {
-      formMessageText.innerHTML =
-        "Your sighting was uploaded successfully. <a href='sightings.html'>View here</a>";
-      form.reset();
+      formMessageText.innerHTML = `Your sighting was uploaded. View it <a href="./sightings.html">here</a>.`;
+      form.reset()
     } else {
-      formMessageText.textContent = "Failed to upload sighting.";
+      formMessageText.textContent = `The server Ghosted you(!). Please try again.`
+      console.error("Server Error:", response.statusText)
     }
-  } catch (err) {
-    console.error(err);
-    formMessageText.textContent = "Something went wrong. Try again.";
+  } catch (error) {
+    formMessageText.textContent = `Serious ghouls! Please try again.`
+    console.error("Error:", error)
   }
-});
+})
